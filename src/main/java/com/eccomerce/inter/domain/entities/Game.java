@@ -1,6 +1,7 @@
 package com.eccomerce.inter.domain.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.Date;
@@ -13,8 +14,13 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String description;
+
+    @NotBlank
     private Double value;
     @ManyToOne
     @JoinColumn(name="mark_id")
