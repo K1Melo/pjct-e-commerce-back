@@ -1,13 +1,12 @@
 package com.eccomerce.inter.domain.services;
 
 import com.eccomerce.inter.domain.entities.Address;
-import com.eccomerce.inter.jdbc.repositories.AddressRepository;
+import com.eccomerce.inter.jpa.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AddressService {

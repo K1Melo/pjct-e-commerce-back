@@ -1,9 +1,7 @@
 package com.eccomerce.inter.domain.services;
 
 import com.eccomerce.inter.domain.entities.Category;
-import com.eccomerce.inter.domain.entities.Mark;
-import com.eccomerce.inter.jdbc.repositories.CategoryRepository;
-import com.eccomerce.inter.jdbc.repositories.MarkRepository;
+import com.eccomerce.inter.jpa.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

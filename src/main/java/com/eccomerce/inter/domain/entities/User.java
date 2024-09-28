@@ -25,6 +25,10 @@ public class User {
     @NotBlank
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
     @Temporal(TemporalType.TIMESTAMP)
