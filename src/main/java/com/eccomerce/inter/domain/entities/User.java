@@ -14,10 +14,11 @@ import java.util.UUID;
 @Entity(name = "tb_users")
 @Table(name = "tb_users")
 public class User {
-    @Id
-    @GeneratedValue(generator = "UUID")
+
     @Getter
     @Setter
+    @Id
+    @GeneratedValue(generator = "UUID")
     private UUID id;
 
     @Column(unique = true, name = "users")
@@ -41,10 +42,10 @@ public class User {
     @Setter
     private String password;
 
-    @CreationTimestamp
     @NonNull
     @Getter
     @Setter
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;

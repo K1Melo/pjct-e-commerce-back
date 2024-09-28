@@ -1,4 +1,4 @@
-package com.eccomerce.inter.resources;
+package com.eccomerce.inter.resources.dto;
 
 import com.eccomerce.inter.domain.entities.User;
 import lombok.Getter;
