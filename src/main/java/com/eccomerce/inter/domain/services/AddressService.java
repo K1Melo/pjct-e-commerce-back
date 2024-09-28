@@ -14,17 +14,21 @@ public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
+    private Date creation;
+
     public List<Address> getAll() {
         return addressRepository.findAll();
     }
 
     public Address add(Address address) {
         address.setCreationDate(new Date());
+        creation = address.getCreationDate();
+        address.setUpdateDate(new Date());
         return addressRepository.saveAndFlush(address);
     }
 
     public Address change(Address address) {
-
+        address.setCreationDate(creation);
         address.setUpdateDate(new Date());
         return addressRepository.saveAndFlush(address);
     }
