@@ -6,17 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
 import java.util.Date;
+
 @Entity
-@Table(name = "tb_categories")
+@Table(name = "tb_permissions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+public class Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @NotBlank
     private String name;
     @Temporal(TemporalType.TIMESTAMP)
@@ -24,7 +25,7 @@ public class Category {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
-    public Category(Long id) {
+    public Permission(Long id) {
         this.id = id;
     }
 }

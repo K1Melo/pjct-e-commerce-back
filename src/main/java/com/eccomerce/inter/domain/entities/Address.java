@@ -3,13 +3,17 @@ package com.eccomerce.inter.domain.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "address")
+@Table(name = "tb_address")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,4 +28,8 @@ public class Address {
     private Date creationDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+
+    public Address(Long id) {
+        this.id = id;
+    }
 }

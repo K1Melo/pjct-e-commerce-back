@@ -2,13 +2,19 @@ package com.eccomerce.inter.domain.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "produto")
+@Table(name = "tb_games")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,13 +26,13 @@ public class Game {
     @NotBlank
     private String description;
 
-    @NotBlank
-    private Double value;
+    @NotNull
+    private Double price;
     @ManyToOne
-    @JoinColumn(name="mark_id")
+    @JoinColumn(name="mark")
     private Mark mark;
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="category")
     private Category category;
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;

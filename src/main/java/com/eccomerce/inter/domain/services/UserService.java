@@ -1,6 +1,8 @@
 package com.eccomerce.inter.domain.services;
 
 import com.eccomerce.inter.domain.entities.User;
+import com.eccomerce.inter.jpa.repositories.AddressRepository;
+import com.eccomerce.inter.jpa.repositories.MarkRepository;
 import com.eccomerce.inter.jpa.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
     private Date creation;
 
     public List<User> getAll() {
