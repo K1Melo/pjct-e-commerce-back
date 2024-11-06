@@ -17,6 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/")
     public User add(@RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.register(clientRequestDTO);

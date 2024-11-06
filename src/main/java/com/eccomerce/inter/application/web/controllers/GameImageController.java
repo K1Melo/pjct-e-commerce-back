@@ -16,21 +16,25 @@ public class GameImageController {
     @Autowired
     GameImageService gameImageService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/")
     public List<GameImage> getAll() {
         return gameImageService.getAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/")
     public GameImage add(@RequestParam("game") Long gameId, @RequestParam MultipartFile file) throws IOException {
         return gameImageService.add(gameId, file);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/")
     public GameImage change(@RequestBody GameImage gameImage) {
         return gameImageService.change(gameImage);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> del(@PathVariable("id") Long id) {
         gameImageService.del(id);

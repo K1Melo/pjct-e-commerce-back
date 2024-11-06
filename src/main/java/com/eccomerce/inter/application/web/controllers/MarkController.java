@@ -16,21 +16,25 @@ public class MarkController {
     @Autowired
     MarkService markService;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/")
     public List<Mark> getAll() {
         return markService.getAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/")
     public Mark add(@RequestBody Mark mark) {
         return markService.add(mark);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/")
     public Mark change(@RequestBody Mark mark) {
         return markService.change(mark);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> del(@PathVariable("id") Long id) {
         markService.del(id);
