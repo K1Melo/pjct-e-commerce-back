@@ -22,6 +22,4 @@ public class ClientController {
     public User add(@RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.register(clientRequestDTO);
     }
-
-
 }

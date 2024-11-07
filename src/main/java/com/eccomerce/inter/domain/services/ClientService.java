@@ -9,8 +9,7 @@ import com.eccomerce.inter.jpa.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ClientService {
@@ -25,10 +24,6 @@ public class ClientService {
 
     private Date creation;
 
-    public List<User> getAll() {
-        return clientRepository.findAll();
-    }
-
     public User register(ClientRequestDTO clientRequestDTO) {
         User user = new ClientRequestDTO().converter(clientRequestDTO);
         user.setUpdateDate(new Date());
@@ -37,7 +32,12 @@ public class ClientService {
 
         User newUser = clientRepository.saveAndFlush(user);
         permissionUserService.bindClientPermission(newUser);
-        emailService.sendEmail(newUser.getEmail(), "Cadastro na KumStore", "O registro foi realizado.");
+//        emailService.sendEmail(newUser.getEmail(), "Cadastro na KumStore", "O registro foi realizado.");
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("username", newUser.getUsername());
+        properties.put("message", "O seu cadastro na Kumstore foi realizado com sucesso. Por favor prossiga com o cadastro de sua senha");
+
+        emailService.sendEmailTemplate(newUser.getEmail(), "Realização de cadastro na Kumstore", properties);
 
         return newUser;
     }

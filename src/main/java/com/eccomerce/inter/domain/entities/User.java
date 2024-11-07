@@ -19,13 +19,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
     private String username;
 
     @Email
     private String email;
 
     private String password;
+
+    private String recoveryCode;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date codeValidityDate;
 
     @ManyToOne
     @JoinColumn(name = "address")
