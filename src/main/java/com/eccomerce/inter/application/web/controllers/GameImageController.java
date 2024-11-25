@@ -23,6 +23,12 @@ public class GameImageController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/game/{id}")
+    public List<GameImage> getByGame(@PathVariable("id") Long gameId) throws IOException {
+        return gameImageService.getByGame(gameId);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/")
     public GameImage add(@RequestParam("game") Long gameId, @RequestParam MultipartFile file) throws IOException {
         return gameImageService.add(gameId, file);

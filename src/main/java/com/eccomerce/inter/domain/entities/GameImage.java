@@ -27,6 +27,9 @@ public class GameImage {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
+    @Transient
+    private byte[] file;
+
     public GameImage(Long id) {
         this.id = id;
     }
