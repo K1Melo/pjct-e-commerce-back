@@ -27,7 +27,7 @@ public class GameImageService {
     @Autowired
     private GameRepository gameRepository;
     private Date creation;
-    private String fileAddress = "assets";
+    private String fileAddress = "C:/Users/k1fer/dev/inter/assets/";
 
     public List<GameImage> getAll() {
         return gameImageRepository.findAll();
