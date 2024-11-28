@@ -42,6 +42,7 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/**").permitAll()
+.requestMatchers("/swagger-ui/**").permitAll()
 //                        .requestMatchers("/api/client/**").permitAll()
 //                        .requestMatchers("/api/game/**").permitAll()
 //                        .requestMatchers("/api/gameimage/**").permitAll()
