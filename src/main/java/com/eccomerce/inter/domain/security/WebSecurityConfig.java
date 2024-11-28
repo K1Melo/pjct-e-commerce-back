@@ -41,10 +41,9 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll()
-//                        .requestMatchers("/api/client/**").permitAll()
-//                        .requestMatchers("/api/game/**").permitAll()
-//                        .requestMatchers("/api/gameimage/**").permitAll()
+                        .requestMatchers("/api/client/**").permitAll()
+                        .requestMatchers("/api/game/**").permitAll()
+                        .requestMatchers("/api/gameimage/**").permitAll()
 //                        .requestMatchers("/api/game/**").hasAuthority("admin")
 //                        .anyRequest().authenticated()
                 )
