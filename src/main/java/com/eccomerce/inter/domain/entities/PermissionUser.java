@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.awt.*;
 import java.util.Date;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PermissionUser {
+public class PermissionUser implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -35,5 +36,10 @@ public class PermissionUser {
 
     public PermissionUser(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String getAuthority() {
+        return permission.getName();
     }
 }

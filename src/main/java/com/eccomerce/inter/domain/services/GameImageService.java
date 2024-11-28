@@ -27,7 +27,7 @@ public class GameImageService {
     @Autowired
     private GameRepository gameRepository;
     private Date creation;
-    private String fileAddress = "https://kumstore.vercel.app/public/uploads/";
+    private String fileAddress = "assets";
 
     public List<GameImage> getAll() {
         return gameImageRepository.findAll();

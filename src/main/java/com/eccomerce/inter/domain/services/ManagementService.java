@@ -5,6 +5,7 @@ import com.eccomerce.inter.domain.entities.User;
 import com.eccomerce.inter.jpa.repositories.ClientRepository;
 import com.eccomerce.inter.jpa.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -19,6 +20,9 @@ public class ManagementService {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     private Date creation;
 
@@ -39,7 +43,7 @@ public class ManagementService {
         Date difference = new Date(new Date().getTime() - databaseUser.getCodeValidityDate().getTime());
 
         if ((difference.getTime()/1000) < 900) {
-            databaseUser.setPassword(user.getPassword());
+            databaseUser.setPassword(passwordEncoder.encode(user.getPassword()));
             databaseUser.setRecoveryCode(null);
             userRepository.saveAndFlush(databaseUser);
             return "Senha alterada com sucesso!";
