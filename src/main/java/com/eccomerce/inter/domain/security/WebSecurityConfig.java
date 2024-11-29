@@ -48,9 +48,9 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/api/gameimage/**", "/api/address/**", "/api/category/**", "/api/client/**", "/api/game/**", "/api/management/**", "/api/mark/**", "/api/permission/**", "/api/user/**").permitAll()
-//                        .anyRequest().authenticated()
+//                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/api/gameimage/**", "/api/address/**", "/api/category/**", "/api/client/**", "/api/game/**", "/api/management/**", "/api/mark/**", "/api/permission/**", "/api/user/**")
+//                                .permitAll()
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
 

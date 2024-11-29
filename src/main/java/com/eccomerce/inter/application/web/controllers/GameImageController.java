@@ -30,8 +30,8 @@ public class GameImageController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/")
-    public GameImage add(@RequestParam("game") Long gameId, @RequestParam("file") MultipartFile file) throws IOException {
-        return gameImageService.add(gameId, file);
+    public GameImage add(@RequestParam("game") Long game, @RequestParam("file") MultipartFile file) throws IOException {
+        return gameImageService.add(game, file);
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
