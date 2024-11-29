@@ -24,7 +24,7 @@ public class GameImageController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/game/{id}")
-    public List<GameImage> getByGame(@PathVariable("id") Long gameId) throws IOException {
+    public List<GameImage> getByGame(@PathVariable("id") Long gameId) {
         return gameImageService.getByGame(gameId);
     }
 
