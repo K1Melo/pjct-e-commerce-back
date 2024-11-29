@@ -75,10 +75,9 @@ public class GameImageService {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) {
-                throw new IOException("Falha ao fazer upload para o Imgur: " + response.message());
-            }
-
+//            if (!response.isSuccessful()) {
+//                throw new IOException("Falha ao fazer upload para o Imgur: " + response.message());
+//            }
             String responseBody = response.body().string();
             return parseImageUrl(responseBody);
         }
