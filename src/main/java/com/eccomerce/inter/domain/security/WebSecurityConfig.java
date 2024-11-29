@@ -42,11 +42,7 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers("/api/client/**").permitAll()
-                        .requestMatchers("/api/game/**").permitAll()
-                        .requestMatchers("/api/gameimage/**").permitAll()
-                        .requestMatchers("/api/**").permitAll()
-                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/api/gameimage/**", "/api/address/**", "/api/category/**", "/api/client/**", "/api/game/**", "/api/management/**", "/api/mark/**", "/api/permission/**", "/api/user/**").permitAll()
 //                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
