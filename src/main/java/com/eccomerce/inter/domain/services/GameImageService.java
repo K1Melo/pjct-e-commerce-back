@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class GameImageService {
@@ -26,9 +27,12 @@ public class GameImageService {
     private static final String IMGUR_UPLOAD_URL = "https://api.imgur.com/3/image";
     private static final String IMGUR_CLIENT_ID = "129f522ad94fc32";
 
-    // Reutilizando o OkHttpClient
+    // Reutilizando o OkHttpClient com timeouts configurados
     private static final OkHttpClient client = new OkHttpClient.Builder()
-            .connectionPool(new ConnectionPool(5, 5, java.util.concurrent.TimeUnit.MINUTES))
+            .connectionPool(new ConnectionPool(5, 5, TimeUnit.MINUTES))
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .writeTimeout(120, TimeUnit.SECONDS)
             .build();
 
     public List<GameImage> getAll() {
