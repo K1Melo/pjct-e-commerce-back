@@ -25,6 +25,12 @@ public class GameImageService {
 
     private static final String IMGUR_UPLOAD_URL = "https://api.imgur.com/3/image";
     private static final String IMGUR_CLIENT_ID = "129f522ad94fc32";
+
+    // Reutilizando o OkHttpClient
+    private static final OkHttpClient client = new OkHttpClient.Builder()
+            .connectionPool(new ConnectionPool(5, 5, java.util.concurrent.TimeUnit.MINUTES))
+            .build();
+
     public List<GameImage> getAll() {
         return gameImageRepository.findAll();
     }
@@ -51,8 +57,6 @@ public class GameImageService {
 
     private String uploadToImgur(MultipartFile file) throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
-
         RequestBody fileBody = RequestBody.create(file.getBytes(), MediaType.parse(file.getContentType()));
 
         RequestBody requestBody = new MultipartBody.Builder()
@@ -66,17 +70,14 @@ public class GameImageService {
                 .post(requestBody)
                 .build();
 
-        Response response = client.newCall(request).execute();
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Falha ao fazer upload para o Imgur: " + response.message());
+            }
 
-        if (!response.isSuccessful()) {
-            throw new IOException("Falha ao fazer upload para o Imgur: " + response.message());
+            String responseBody = response.body().string();
+            return parseImageUrl(responseBody);
         }
-
-        String responseBody = response.body().string();
-        String imageUrl = parseImageUrl(responseBody);
-
-        response.close();
-        return imageUrl;
     }
 
     private String parseImageUrl(String responseBody) {
