@@ -35,4 +35,8 @@ public class GameService {
         Game game = gameRepository.findById(id).get();
         gameRepository.delete(game);
     }
+
+    public void del() {
+        gameRepository.deleteAll();
+    }
 }

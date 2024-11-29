@@ -41,4 +41,9 @@ public class GameController {
         gameService.del(id);
         return ResponseEntity.ok().build();
     }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @DeleteMapping("/del")
+    public void del() {
+        gameService.del();
+    }
 }

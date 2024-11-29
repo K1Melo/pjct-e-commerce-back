@@ -27,6 +27,7 @@ public class GameImage {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
+    private String url;
     @Transient
     private byte[] file;
 

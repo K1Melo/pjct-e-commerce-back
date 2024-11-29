@@ -46,4 +46,10 @@ public class GameImageController {
         gameImageService.del(id);
         return ResponseEntity.ok().build();
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @DeleteMapping("/del")
+    public void del() {
+        gameImageService.del();
+    }
 }
