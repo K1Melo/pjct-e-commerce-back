@@ -41,10 +41,12 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers("/api/client/**").permitAll()
                         .requestMatchers("/api/game/**").permitAll()
                         .requestMatchers("/api/gameimage/**").permitAll()
-//                        .requestMatchers("/api/game/**").hasAuthority("admin")
+                        .requestMatchers("/api/**").permitAll()
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
 //                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
